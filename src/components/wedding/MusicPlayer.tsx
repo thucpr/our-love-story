@@ -51,7 +51,7 @@ const MusicPlayer = () => {
     <>
       <audio
         ref={audioRef}
-        src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_04_-_Sentinel.mp3"
+        src="/music/My_Love.mp3"
         loop
         preload="auto"
       />
