@@ -51,7 +51,9 @@ const GiftSection = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="wedding-subtitle">Gửi Lời Chúc</p>
-          <h2 className="wedding-title">Hộp Mừng Cưới</h2>
+          <h2 className="wedding-title text-[clamp(1.9rem,3vw,2.5rem)]">
+               Hộp Mừng Cưới
+           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground mt-4">
             Sự hiện diện của bạn là món quà quý giá nhất. Nếu bạn muốn gửi thêm
             lời chúc phúc, chúng tôi xin trân trọng đón nhận.
