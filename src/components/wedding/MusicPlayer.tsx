@@ -6,7 +6,7 @@ const MusicPlayer = () => {
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Auto-play on first interaction
+  // Auto-play on first interaction (click, scroll, or touch)
   useEffect(() => {
     const handleFirstInteraction = () => {
       if (!hasInteracted && audioRef.current) {
@@ -14,12 +14,26 @@ const MusicPlayer = () => {
         audioRef.current.play()
           .then(() => setIsPlaying(true))
           .catch(() => setIsPlaying(false));
+        
+        // Remove all listeners after first interaction
         document.removeEventListener('click', handleFirstInteraction);
+        document.removeEventListener('scroll', handleFirstInteraction);
+        document.removeEventListener('touchstart', handleFirstInteraction);
+        document.removeEventListener('wheel', handleFirstInteraction);
       }
     };
 
     document.addEventListener('click', handleFirstInteraction);
-    return () => document.removeEventListener('click', handleFirstInteraction);
+    document.addEventListener('scroll', handleFirstInteraction);
+    document.addEventListener('touchstart', handleFirstInteraction);
+    document.addEventListener('wheel', handleFirstInteraction);
+    
+    return () => {
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('scroll', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+      document.removeEventListener('wheel', handleFirstInteraction);
+    };
   }, [hasInteracted]);
 
   const togglePlay = () => {
@@ -37,7 +51,7 @@ const MusicPlayer = () => {
     <>
       <audio
         ref={audioRef}
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_04_-_Sentinel.mp3"
         loop
         preload="auto"
       />
