@@ -1,49 +1,50 @@
 import { useState, useRef, useEffect } from 'react';
-import { Music, Pause, Play, Volume2, VolumeX } from 'lucide-react';
+import { Music } from 'lucide-react';
+
+const MUSIC_KEY = 'wedding_music_enabled';
 
 const MusicPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Auto-play on first interaction (click, scroll, or touch)
+  const [isPlaying, setIsPlaying] = useState(() => {
+    return localStorage.getItem(MUSIC_KEY) === 'true';
+  });
+
+  // Auto play when user clicks anywhere (only if previously enabled)
   useEffect(() => {
-    const handleFirstInteraction = () => {
-      if (!hasInteracted && audioRef.current) {
-        setHasInteracted(true);
-        audioRef.current.play()
+    const handleClick = () => {
+      if (!audioRef.current) return;
+
+      if (localStorage.getItem(MUSIC_KEY) === 'true') {
+        audioRef.current
+          .play()
           .then(() => setIsPlaying(true))
-          .catch(() => setIsPlaying(false));
-        
-        // Remove all listeners after first interaction
-        document.removeEventListener('click', handleFirstInteraction);
-        document.removeEventListener('scroll', handleFirstInteraction);
-        document.removeEventListener('touchstart', handleFirstInteraction);
-        document.removeEventListener('wheel', handleFirstInteraction);
+          .catch(() => {});
       }
     };
 
-    document.addEventListener('click', handleFirstInteraction);
-    document.addEventListener('scroll', handleFirstInteraction);
-    document.addEventListener('touchstart', handleFirstInteraction);
-    document.addEventListener('wheel', handleFirstInteraction);
-    
+    document.addEventListener('click', handleClick, { once: true });
+
     return () => {
-      document.removeEventListener('click', handleFirstInteraction);
-      document.removeEventListener('scroll', handleFirstInteraction);
-      document.removeEventListener('touchstart', handleFirstInteraction);
-      document.removeEventListener('wheel', handleFirstInteraction);
+      document.removeEventListener('click', handleClick);
     };
-  }, [hasInteracted]);
+  }, []);
 
   const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      localStorage.setItem(MUSIC_KEY, 'false');
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => {
+          localStorage.setItem(MUSIC_KEY, 'true');
+          setIsPlaying(true);
+        })
+        .catch(() => {});
     }
   };
 
@@ -61,7 +62,11 @@ const MusicPlayer = () => {
         className="music-toggle group"
         aria-label={isPlaying ? 'Tắt nhạc' : 'Bật nhạc'}
       >
-        <div className={`absolute inset-0 rounded-full bg-primary/30 ${isPlaying ? 'animate-ping' : ''}`} />
+        <div
+          className={`absolute inset-0 rounded-full bg-primary/30 ${
+            isPlaying ? 'animate-ping' : ''
+          }`}
+        />
         <div className="relative flex items-center justify-center">
           {isPlaying ? (
             <div className="flex items-center gap-0.5">
@@ -70,8 +75,8 @@ const MusicPlayer = () => {
                   key={i}
                   className="w-1 bg-white rounded-full animate-pulse"
                   style={{
-                    height: `${12 + Math.random() * 8}px`,
-                    animationDelay: `${i * 0.1}s`,
+                    height: `${12 + i * 4}px`,
+                    animationDelay: `${i * 0.12}s`,
                   }}
                 />
               ))}

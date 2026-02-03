@@ -51,7 +51,7 @@ const GiftSection = () => {
                     <Gift className="w-12 h-12 text-primary" />
                   </div>
                   <span className="font-script text-3xl text-primary">Mở Hộp Quà</span>
-                  <p className="text-muted-foreground text-sm">Nhấn để xem mã QR chuyển khoản</p>
+                  <p className="text-muted-foreground text-sm">Nhấn để xem mã QR</p>
                 </div>
               </button>
             </DialogTrigger>

@@ -22,12 +22,12 @@ const ThankYouSection = () => {
             nhất trong ngày trọng đại này.
           </p>
 
-          <div className="font-script text-3xl text-foreground">
+          <div className="font-script md:text-5xl text-primary mb-6">
             Bá Thức & Vân Anh
           </div>
 
           <div className="mt-8 text-sm text-muted-foreground">
-            09.03.2026
+            12.03.2026
           </div>
         </div>
       </div>

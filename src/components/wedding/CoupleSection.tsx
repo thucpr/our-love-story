@@ -7,7 +7,6 @@ const CoupleSection = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <p className="wedding-subtitle">Lời cảm ơn</p>
-          <h2 className="wedding-title">Chúng Tôi</h2>
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg mt-6 font-script text-2xl">
             Chúng con xin gửi lời cảm ơn chân thành và sâu sắc nhất đến ông bà, cô bác, 
             anh chị em, bạn bè và đồng nghiệp đã dành thời gian quý báu đến tham dự lễ cưới của chúng con
@@ -15,9 +14,20 @@ const CoupleSection = () => {
         </div>
 
         {/* Couple Cards */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="relative grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+          
+          {/* Heart Divider - Center */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center shadow-xl animate-pulse-slow">
+              <Heart className="w-10 h-10 text-white fill-white" />
+            </div>
+          </div>
+
           {/* Groom */}
-          <div className="wedding-card text-center group animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <div
+            className="wedding-card text-center group animate-fade-up"
+            style={{ animationDelay: '0.2s' }}
+          >
             <div className="relative w-48 h-48 mx-auto mb-6">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-pulse-slow" />
               <img
@@ -33,22 +43,11 @@ const CoupleSection = () => {
             </p>
           </div>
 
-          {/* Heart Divider - Desktop */}
-          <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center animate-pulse-slow">
-              <Heart className="w-10 h-10 text-white fill-white" />
-            </div>
-          </div>
-
-          {/* Heart Divider - Mobile */}
-          <div className="md:hidden flex justify-center my-8">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center animate-pulse-slow">
-              <Heart className="w-8 h-8 text-white fill-white" />
-            </div>
-          </div>
-
           {/* Bride */}
-          <div className="wedding-card text-center group animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div
+            className="wedding-card text-center group animate-fade-up"
+            style={{ animationDelay: '0.4s' }}
+          >
             <div className="relative w-48 h-48 mx-auto mb-6">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-pulse-slow" />
               <img

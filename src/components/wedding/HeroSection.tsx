@@ -84,7 +84,7 @@ const HeroSection = () => {
         </div>
 
         <p className="text-2xl md:text-3xl font-light mb-12">
-          09 Tháng 03, 2026
+          12 Tháng 03, 2026
         </p>
 
         {/* Countdown */}

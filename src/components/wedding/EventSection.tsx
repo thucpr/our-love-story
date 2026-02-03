@@ -81,19 +81,6 @@ const EventSection = () => {
                 ))}
               </div>
 
-              {/* Google Maps Embed */}
-              <div className="mt-6 rounded-xl overflow-hidden border border-primary/20">
-                <iframe
-                  src={event.embedUrl}
-                  width="100%"
-                  height="200"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={`Bản đồ ${event.title}`}
-                />
-              </div>
 
               <a
                 href={event.mapUrl}
