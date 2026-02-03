@@ -31,14 +31,26 @@ const GiftSection = () => {
   } | null>(null);
 
     // ✅ ADD THIS HERE
-  const downloadQr = (src: string, fileName: string) => {
+  const downloadQr = async (src: string, fileName: string) => {
+  try {
+    const res = await fetch(src);
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+
     const link = document.createElement('a');
-    link.href = src;
+    link.href = url;
     link.download = fileName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    // fallback cho iOS Safari
+    window.open(src, '_blank');
   }
+};
+
   const copyToClipboard = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
     setCopiedIndex(index);
