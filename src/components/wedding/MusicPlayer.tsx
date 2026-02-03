@@ -1,57 +1,37 @@
 import { useState, useRef, useEffect } from 'react';
 import { Music } from 'lucide-react';
 
-const MUSIC_KEY = 'wedding_music_enabled';
-
 const MusicPlayer = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const hasTriedAutoPlay = useRef(false);
 
-  const [isPlaying, setIsPlaying] = useState(() => {
-    return localStorage.getItem(MUSIC_KEY) === 'true';
-  });
-
-  // 🔹 Try autoplay on scroll or first click
+  // Auto play when user scrolls (first time only)
   useEffect(() => {
-    const tryPlay = () => {
-      if (!audioRef.current) return;
-      if (hasTriedAutoPlay.current) return;
-      if (localStorage.getItem(MUSIC_KEY) !== 'true') return;
-
-      hasTriedAutoPlay.current = true;
-
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {});
+    const handleScroll = () => {
+      if (audioRef.current && !isPlaying) {
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => {});
+      }
     };
 
-    window.addEventListener('scroll', tryPlay, { passive: true });
-    document.addEventListener('click', tryPlay, { once: true });
+    window.addEventListener('scroll', handleScroll, { once: true });
 
     return () => {
-      window.removeEventListener('scroll', tryPlay);
-      document.removeEventListener('click', tryPlay);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isPlaying]);
 
-  // 🔹 Toggle manually
   const togglePlay = () => {
     if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
-      localStorage.setItem(MUSIC_KEY, 'false');
-      setIsPlaying(false);
     } else {
-      audioRef.current
-        .play()
-        .then(() => {
-          localStorage.setItem(MUSIC_KEY, 'true');
-          setIsPlaying(true);
-        })
-        .catch(() => {});
+      audioRef.current.play();
     }
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -73,7 +53,6 @@ const MusicPlayer = () => {
             isPlaying ? 'animate-ping' : ''
           }`}
         />
-
         <div className="relative flex items-center justify-center">
           {isPlaying ? (
             <div className="flex items-center gap-0.5">
