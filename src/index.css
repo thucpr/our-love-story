@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =======================
+   BASE VARIABLES
+======================= */
 @layer base {
   :root {
     --background: 30 50% 98%;
@@ -27,16 +30,13 @@
     --accent: 38 70% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
     --border: 30 30% 88%;
     --input: 30 30% 88%;
     --ring: 0 60% 72%;
 
     --radius: 0.75rem;
 
-    /* Custom wedding colors */
+    /* Wedding palette */
     --rose: 0 60% 72%;
     --rose-light: 0 50% 92%;
     --champagne: 38 70% 60%;
@@ -45,10 +45,30 @@
     --gold: 43 74% 49%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(350 60% 95%) 0%, hsl(30 50% 98%) 50%, hsl(38 40% 95%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(30 50% 98%) 0%, hsl(350 60% 97%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(350 50% 98%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 74% 49%) 0%, hsl(38 70% 60%) 100%);
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(350 60% 95%) 0%,
+      hsl(30 50% 98%) 50%,
+      hsl(38 40% 95%) 100%
+    );
+
+    --gradient-section: linear-gradient(
+      180deg,
+      hsl(30 50% 98%) 0%,
+      hsl(350 60% 97%) 100%
+    );
+
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(0 0% 100%) 0%,
+      hsl(350 50% 98%) 100%
+    );
+
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(43 74% 49%) 0%,
+      hsl(38 70% 60%) 100%
+    );
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(0 60% 72% / 0.15);
@@ -56,30 +76,16 @@
     --shadow-elevated: 0 20px 50px -15px hsl(0 60% 72% / 0.25);
   }
 
-  .dark {
-    --background: 20 20% 10%;
-    --foreground: 30 20% 95%;
-    --card: 20 20% 12%;
-    --card-foreground: 30 20% 95%;
-    --popover: 20 20% 12%;
-    --popover-foreground: 30 20% 95%;
-    --primary: 0 60% 72%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 20 20% 18%;
-    --secondary-foreground: 30 20% 90%;
-    --muted: 20 20% 18%;
-    --muted-foreground: 30 15% 60%;
-    --accent: 38 70% 60%;
-    --accent-foreground: 0 0% 100%;
-    --border: 20 20% 20%;
-    --input: 20 20% 20%;
-    --ring: 0 60% 72%;
+  /* ===== FONT BASELINE (QUAN TRỌNG) ===== */
+  html {
+    font-size: 16px; /* baseline ổn định cho mọi môi trường */
+    -webkit-text-size-adjust: 100%;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
+  @media (min-width: 1536px) {
+    html {
+      font-size: 17px;
+    }
   }
 
   body {
@@ -87,15 +93,24 @@
     font-family: 'Montserrat', sans-serif;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: 'Playfair Display', serif;
   }
 
   .font-script {
     font-family: 'Great Vibes', cursive;
   }
+
+  * {
+    @apply border-border;
+  }
 }
 
+/* =======================
+   COMPONENTS
+======================= */
 @layer components {
   .wedding-section {
     @apply py-16 md:py-24 px-4;
@@ -111,15 +126,20 @@
     box-shadow: var(--shadow-card);
   }
 
+  /* ===== FIX FONT PHÌNH ===== */
   .wedding-title {
-    @apply text-3xl md:text-5xl font-semibold text-center mb-4;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
     color: hsl(var(--foreground));
   }
 
   .wedding-subtitle {
-    @apply text-center mb-8;
     font-family: 'Great Vibes', cursive;
-    font-size: 1.75rem;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    text-align: center;
+    margin-bottom: 2rem;
     color: hsl(var(--primary));
   }
 
@@ -136,12 +156,16 @@
   }
 
   .timeline-line {
-    @apply absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full;
-    background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    @apply absolute left-1/2 -translate-x-1/2 w-0.5 h-full;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 100%
+    );
   }
 
   .timeline-dot {
-    @apply absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4;
+    @apply absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4;
     background: hsl(var(--background));
     border-color: hsl(var(--primary));
   }
@@ -173,7 +197,8 @@
   }
 
   .countdown-number {
-    @apply text-3xl md:text-4xl font-bold;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
     color: hsl(var(--primary));
   }
 
@@ -183,6 +208,9 @@
   }
 }
 
+/* =======================
+   UTILITIES
+======================= */
 @layer utilities {
   .animate-float {
     animation: float 6s ease-in-out infinite;
@@ -201,8 +229,13 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes fadeUp {
@@ -241,22 +274,4 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-@layer base {
-  html {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1024px) {
-    html {
-      font-size: 18px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    html {
-      font-size: 19px;
-    }
-  }
-}
 }
