@@ -87,22 +87,27 @@ const HeroSection = () => {
           12 Tháng 03, 2026
         </p>
 
-        {/* Countdown */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-          {[
-            { value: countdown.days, label: 'Ngày' },
-            { value: countdown.hours, label: 'Giờ' },
-            { value: countdown.minutes, label: 'Phút' },
-            { value: countdown.seconds, label: 'Giây' },
-          ].map((item, index) => (
-            <div key={index} className="countdown-box">
-              <span className="countdown-number">
-                {String(item.value).padStart(2, '0')}
-              </span>
-              <span className="countdown-label">{item.label}</span>
-            </div>
-          ))}
-        </div>
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+  {[
+    { value: countdown.days, label: 'Ngày' },
+    { value: countdown.hours, label: 'Giờ' },
+    { value: countdown.minutes, label: 'Phút' },
+    { value: countdown.seconds, label: 'Giây' },
+  ].map((item, index) => (
+    <div
+      key={index}
+      className="countdown-box px-3 py-2 min-w-[64px]"
+    >
+      <span className="countdown-number text-2xl md:text-3xl">
+        {String(item.value).padStart(2, '0')}
+      </span>
+      <span className="countdown-label text-[10px]">
+        {item.label}
+      </span>
+    </div>
+  ))}
+</div>
+
       </div>
 
       {/* Scroll Indicator */}
