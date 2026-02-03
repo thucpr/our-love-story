@@ -1,6 +1,12 @@
 import { useState } from 'react';
-import { Gift, Heart, X, Copy, Check } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Gift, Heart, Copy, Check } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import techQr from '../../image/tech.png';
 import vpQr from '../../image/vp.png';
 
@@ -24,48 +30,45 @@ const bankAccounts = [
 const GiftSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-
-    const [previewQr, setPreviewQr] = useState<{
+  const [previewQr, setPreviewQr] = useState<{
     src: string;
     fileName: string;
   } | null>(null);
 
-    // ✅ ADD THIS HERE
   const downloadQr = async (src: string, fileName: string) => {
-  try {
-    const res = await fetch(src);
-    const blob = await res.blob();
-    const url = window.URL.createObjectURL(blob);
+    try {
+      const res = await fetch(src);
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
 
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
-    window.URL.revokeObjectURL(url);
-  } catch (err) {
-    // fallback cho iOS Safari
-    window.open(src, '_blank');
-  }
-};
+      window.URL.revokeObjectURL(url);
+    } catch {
+      window.open(src, '_blank');
+    }
+  };
 
   const copyToClipboard = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
     setCopiedIndex(index);
     setTimeout(() => setCopiedIndex(null), 2000);
   };
-  
-    return (
+
+  return (
     <section className="wedding-section bg-gradient-hero">
       <div className="wedding-container">
         {/* Header */}
         <div className="text-center mb-12">
           <p className="wedding-subtitle">Gửi Lời Chúc</p>
           <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
-               Hộp Mừng Cưới
-           </h2>
+            Hộp Mừng Cưới
+          </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground mt-4">
             Sự hiện diện của bạn là món quà quý giá nhất. Nếu bạn muốn gửi thêm
             lời chúc phúc, chúng tôi xin trân trọng đón nhận.
@@ -76,9 +79,9 @@ const GiftSection = () => {
         <div className="flex justify-center">
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <button className="group relative">
+              <button type="button" className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-                <div className="relative wedding-card flex flex-col items-center gap-4 cursor-pointer transition-transform duration-300 group-hover:scale-105">
+                <div className="relative wedding-card flex flex-col items-center gap-4 transition-transform duration-300 group-hover:scale-105">
                   <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                     <Gift className="w-12 h-12 text-primary" />
                   </div>
@@ -128,9 +131,7 @@ const GiftSection = () => {
                     />
 
                     <div className="flex-1 text-center sm:text-left">
-                      <p className="font-semibold text-foreground">
-                        {account.name}
-                      </p>
+                      <p className="font-semibold">{account.name}</p>
                       <p className="text-sm text-muted-foreground mb-2">
                         {account.bank}
                       </p>
@@ -141,9 +142,11 @@ const GiftSection = () => {
                         </code>
 
                         <button
-                          onClick={() =>
-                            copyToClipboard(account.account, index)
-                          }
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            copyToClipboard(account.account, index);
+                          }}
                           className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
                         >
                           {copiedIndex === index ? (
@@ -167,11 +170,8 @@ const GiftSection = () => {
               </p>
             </DialogContent>
 
-            {/* QR PREVIEW DIALOG */}
-            <Dialog
-              open={!!previewQr}
-              onOpenChange={() => setPreviewQr(null)}
-            >
+            {/* QR PREVIEW */}
+            <Dialog open={!!previewQr} onOpenChange={() => setPreviewQr(null)}>
               <DialogContent className="max-w-sm text-center">
                 {previewQr && (
                   <>
@@ -180,8 +180,8 @@ const GiftSection = () => {
                       alt="QR Preview"
                       className="w-64 h-64 mx-auto object-contain"
                     />
-
                     <button
+                      type="button"
                       onClick={() =>
                         downloadQr(previewQr.src, previewQr.fileName)
                       }
