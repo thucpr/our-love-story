@@ -5,31 +5,37 @@ const MUSIC_KEY = 'wedding_music_enabled';
 
 const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const hasTriedAutoPlay = useRef(false);
 
   const [isPlaying, setIsPlaying] = useState(() => {
     return localStorage.getItem(MUSIC_KEY) === 'true';
   });
 
-  // Auto play when user clicks anywhere (only if previously enabled)
+  // 🔹 Try autoplay on scroll or first click
   useEffect(() => {
-    const handleClick = () => {
+    const tryPlay = () => {
       if (!audioRef.current) return;
+      if (hasTriedAutoPlay.current) return;
+      if (localStorage.getItem(MUSIC_KEY) !== 'true') return;
 
-      if (localStorage.getItem(MUSIC_KEY) === 'true') {
-        audioRef.current
-          .play()
-          .then(() => setIsPlaying(true))
-          .catch(() => {});
-      }
+      hasTriedAutoPlay.current = true;
+
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
     };
 
-    document.addEventListener('click', handleClick, { once: true });
+    window.addEventListener('scroll', tryPlay, { passive: true });
+    document.addEventListener('click', tryPlay, { once: true });
 
     return () => {
-      document.removeEventListener('click', handleClick);
+      window.removeEventListener('scroll', tryPlay);
+      document.removeEventListener('click', tryPlay);
     };
   }, []);
 
+  // 🔹 Toggle manually
   const togglePlay = () => {
     if (!audioRef.current) return;
 
@@ -67,6 +73,7 @@ const MusicPlayer = () => {
             isPlaying ? 'animate-ping' : ''
           }`}
         />
+
         <div className="relative flex items-center justify-center">
           {isPlaying ? (
             <div className="flex items-center gap-0.5">

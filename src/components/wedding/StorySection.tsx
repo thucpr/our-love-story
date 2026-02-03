@@ -11,7 +11,7 @@ const stories = [
   {
     date: '02/2025',
     title: 'Buổi đầu hẹn hò',
-    description: 'Buổi hẹn hò đầu, người ta thường đi ăn hay dạo phố, còn chúng tôi chọn một quán cafe ngay giữa con phố nhỏ để chai sẻ những câu chuyện nồng ấm',
+    description: 'Buổi hẹn hò đầu, người ta thường đi ăn hay dạo phố, còn chúng tôi chọn một quán cafe ngay giữa con phố nhỏ để chia sẻ những câu chuyện nồng ấm',
     image: 'https://images.unsplash.com/photo-1529543544277-750e1a75a0e1?w=600',
   },
   {
