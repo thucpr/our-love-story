@@ -73,7 +73,7 @@ const HeroSection = () => {
           Save The Date
         </p>
         
-        <h1 className="font-script text-5xl md:text-7xl lg:text-8xl mb-6 drop-shadow-lg">
+        <h1 className="font-script text-4xl md:text-6xl lg:text-7xl mb-6 drop-shadow-lg">
           Bá Thức & Vân Anh
         </h1>
 

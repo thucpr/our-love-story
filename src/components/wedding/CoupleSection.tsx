@@ -7,7 +7,7 @@ const CoupleSection = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <p className="wedding-subtitle">Lời cảm ơn</p>
-          <p className="max-w-2xl mx-auto text-muted-foreground text-lg mt-6 font-script text-2xl">
+          <p className="max-w-2xl mx-auto text-primary text-lg mt-6 font-script text-2xl">
             Chúng con xin gửi lời cảm ơn chân thành và sâu sắc nhất đến ông bà, cô bác, 
             anh chị em, bạn bè và đồng nghiệp đã dành thời gian quý báu đến tham dự lễ cưới của chúng con
           </p>
