@@ -3,21 +3,23 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 const events = [
   {
     title: 'Nhà Gái',
-    location: 'Xã Thắng Lợi - Tỉnh Thanh Hóa',
+    location: 'Xã Tế Thắng, Huyện Nông Cống, Tỉnh Thanh Hóa',
     schedules: [
       { time: '17:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
       { time: '11:00', date: 'Thứ 5, 12/03/2026', event: 'Lễ Vu Quy' },
     ],
-    mapUrl: 'https://maps.app.goo.gl/skM6ANq9PGaPcVFJ6',
+    mapUrl: 'https://maps.google.com/maps?q=Tế+Thắng,+Nông+Cống,+Thanh+Hóa',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007.123456789!2d105.6617813!3d19.6839322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3136fc336156dc0f%3A0x7cfeae93577b752d!2zVOG6vyBUaOG6r25nLCBOw7RuZyBD4buRbmcsIFRoYW5oIEjDs2EsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1234567890',
   },
   {
     title: 'Nhà Trai',
-    location: 'Thôn Cẩm Vinh - Xã Hoằng Lộc - Tỉnh Thanh Hóa',
+    location: 'Xã Hoằng Tân, Huyện Hoằng Hóa, Tỉnh Thanh Hóa',
     schedules: [
       { time: '17:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
       { time: '11:00', date: 'Thứ 5, 12/03/2026', event: 'Lễ Thành Hôn' },
     ],
-    mapUrl: 'https://maps.app.goo.gl/zG5ZTQjwaXUjRPDBA',
+    mapUrl: 'https://maps.google.com/maps?q=Hoằng+Tân,+Hoằng+Hóa,+Thanh+Hóa',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007.123456789!2d105.8591213!3d19.7826836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31365746cf493b4b%3A0xcd675f6f9104cc89!2zSG_hurFuZyBUw6JuLCBIb-G6sW5nIEjDs2EsIFRoYW5oIEjDs2EsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1234567890',
   },
 ];
 
@@ -79,14 +81,28 @@ const EventSection = () => {
                 ))}
               </div>
 
+              {/* Google Maps Embed */}
+              <div className="mt-6 rounded-xl overflow-hidden border border-primary/20">
+                <iframe
+                  src={event.embedUrl}
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Bản đồ ${event.title}`}
+                />
+              </div>
+
               <a
                 href={event.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="wedding-button w-full mt-6"
+                className="wedding-button w-full mt-4"
               >
                 <MapPin className="w-4 h-4" />
-                Xem bản đồ
+                Mở Google Maps
               </a>
             </div>
           ))}
