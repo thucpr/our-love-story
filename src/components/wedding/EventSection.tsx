@@ -40,7 +40,10 @@ const EventSection = () => {
         {/* Header */}
         <div className="text-center mb-16 text-white">
           <p className="wedding-subtitle !text-white/90">Sự kiện đặc biệt</p>
-          <h2 className="wedding-title !text-white">Lịch Trình</h2>
+          <h2 className="wedding-title !text-white text-[clamp(1.6rem,2.6vw,2.2rem)]">
+                Lịch Trình
+          </h2>
+
         </div>
 
         {/* Event Cards */}

@@ -33,7 +33,7 @@ const GallerySection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="wedding-subtitle">Our Memories</p>
-          <h2 className="wedding-title text-[clamp(1.9rem,3vw,2.5rem)]">
+        <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
             Bộ Sưu Tập
           </h2>
 

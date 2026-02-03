@@ -7,7 +7,7 @@ import vpQr from '../../image/vp.png';
 const bankAccounts = [
   {
     name: 'NGUYEN BA THUC',
-    bank: 'TechCombank',
+    bank: 'TECHCOMBANK',
     account: '882681698888',
     qrUrl: techQr,
     fileName: 'QR-Techcombank-Nguyen-Ba-Thuc.png',
@@ -51,7 +51,7 @@ const GiftSection = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="wedding-subtitle">Gửi Lời Chúc</p>
-          <h2 className="wedding-title text-[clamp(1.9rem,3vw,2.5rem)]">
+          <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
                Hộp Mừng Cưới
            </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground mt-4">

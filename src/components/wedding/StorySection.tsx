@@ -31,9 +31,10 @@ const StorySection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="wedding-subtitle">We Love Each Other</p>
-          <h2 className="wedding-title text-[clamp(1.9rem,3vw,2.5rem)]">
-            Câu Chuyện Tình Yêu
-          </h2>
+        <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
+        Câu Chuyện Tình Yêu
+        </h2>
+
          <p className="max-w-2xl mx-auto mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
 
             Chúng tôi gặp nhau vào một ngày thật tình cờ rồi chẳng ai ngờ rằng 
