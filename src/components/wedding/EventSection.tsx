@@ -3,7 +3,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 const events = [
   {
     title: 'Nhà Gái',
-    location: 'Xã Tế Thắng, Huyện Nông Cống, Tỉnh Thanh Hóa',
+    location: 'Xã Thắng Lợi, Huyện Nông Cống, Tỉnh Thanh Hóa',
     schedules: [
       { time: '17:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
       { time: '11:00', date: 'Thứ 5, 12/03/2026', event: 'Lễ Vu Quy' },
