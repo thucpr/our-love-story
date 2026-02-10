@@ -51,7 +51,7 @@ const Navigation = () => {
             }}
           >
             <Heart className={`w-5 h-5 fill-primary ${isScrolled ? 'text-primary' : 'text-white'}`} />
-            <span className={isScrolled ? 'text-foreground' : 'text-white'}>T & V</span>
+            <span className={isScrolled ? 'text-foreground' : 'text-white'}>T & A</span>
           </a>
 
           {/* Desktop Menu */}
