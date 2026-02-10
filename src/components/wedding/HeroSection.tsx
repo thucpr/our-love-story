@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
+import couple from '../../image/couple.png';
 
 interface CountdownTime {
   days: number;
@@ -44,7 +45,9 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1519741497674-611481863552?w=1920)',
+           backgroundImage: `url(${couple})`,
+           backgroundPosition: 'center 26%',
+           
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
