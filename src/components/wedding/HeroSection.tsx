@@ -72,13 +72,15 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 animate-fade-up">
-        <p className="text-lg md:text-xl tracking-[0.3em] uppercase mb-4 opacity-90">
-          Save The Date
-        </p>
-        
-        <h1 className="font-script text-4xl md:text-6xl lg:text-7xl mb-6 drop-shadow-lg">
-          Bá Thức & Vân Anh
-        </h1>
+<div className="flex flex-col items-center text-center translate-y-6 md:translate-y-10">
+  <p className="text-lg md:text-xl tracking-[0.3em] uppercase mb-4 opacity-90">
+    Save The Date
+  </p>
+
+  <h1 className="font-script text-4xl md:text-6xl lg:text-7xl mb-6 drop-shadow-lg">
+    Bá Thức & Vân Anh
+  </h1>
+</div>
 
         <div className="flex items-center justify-center gap-4 mb-8">
           <div className="h-px w-16 md:w-24 bg-white/60" />
