@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Gift, Heart, Copy, Check } from 'lucide-react';
+import { Gift, Heart, X, Copy, Check } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+
 import techQr from '../../image/tech.png';
 import vpQr from '../../image/vp.png';
 
@@ -50,6 +51,7 @@ const GiftSection = () => {
 
       window.URL.revokeObjectURL(url);
     } catch {
+      // fallback cho iOS Safari
       window.open(src, '_blank');
     }
   };
@@ -66,9 +68,11 @@ const GiftSection = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="wedding-subtitle">Gửi Lời Chúc</p>
+
           <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
             Hộp Mừng Cưới
           </h2>
+
           <p className="max-w-2xl mx-auto text-muted-foreground mt-4">
             Sự hiện diện của bạn là món quà quý giá nhất. Nếu bạn muốn gửi thêm
             lời chúc phúc, chúng tôi xin trân trọng đón nhận.
@@ -77,17 +81,26 @@ const GiftSection = () => {
 
         {/* Gift Box Button */}
         <div className="flex justify-center">
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <Dialog
+            open={isOpen}
+            onOpenChange={(open) => {
+              setIsOpen(open);
+              if (!open) setPreviewQr(null);
+            }}
+          >
             <DialogTrigger asChild>
-              <button type="button" className="group relative">
+              <button className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-                <div className="relative wedding-card flex flex-col items-center gap-4 transition-transform duration-300 group-hover:scale-105">
+
+                <div className="relative wedding-card flex flex-col items-center gap-4 cursor-pointer transition-transform duration-300 group-hover:scale-105">
                   <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                     <Gift className="w-12 h-12 text-primary" />
                   </div>
+
                   <span className="font-script text-3xl text-primary">
                     Mở Hộp Quà
                   </span>
+
                   <p className="text-muted-foreground text-sm">
                     Nhấn để xem mã QR
                   </p>
@@ -95,7 +108,37 @@ const GiftSection = () => {
               </button>
             </DialogTrigger>
 
-            <DialogContent className="max-w-lg bg-gradient-to-br from-background to-muted border-primary/20">
+            {/* MAIN DIALOG */}
+            <DialogContent
+              className="
+                max-w-lg
+                bg-gradient-to-br from-background to-muted
+                border-primary/20
+                max-h-[90dvh]
+                overflow-y-auto
+                pt-14
+              "
+            >
+              {/* FIXED CLOSE BUTTON – LUÔN THẤY TRÊN MOBILE */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="
+                  fixed
+                  right-4
+                  top-[calc(env(safe-area-inset-top)+12px)]
+                  z-50
+                  rounded-full
+                  p-2
+                  bg-background/80
+                  backdrop-blur
+                  shadow
+                  hover:bg-muted
+                "
+                aria-label="Đóng"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
               <DialogHeader>
                 <DialogTitle className="text-center">
                   <span className="font-script text-4xl text-primary">
@@ -131,7 +174,10 @@ const GiftSection = () => {
                     />
 
                     <div className="flex-1 text-center sm:text-left">
-                      <p className="font-semibold">{account.name}</p>
+                      <p className="font-semibold text-foreground">
+                        {account.name}
+                      </p>
+
                       <p className="text-sm text-muted-foreground mb-2">
                         {account.bank}
                       </p>
@@ -142,11 +188,9 @@ const GiftSection = () => {
                         </code>
 
                         <button
-                          type="button"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            copyToClipboard(account.account, index);
-                          }}
+                          onClick={() =>
+                            copyToClipboard(account.account, index)
+                          }
                           className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
                         >
                           {copiedIndex === index ? (
@@ -170,7 +214,7 @@ const GiftSection = () => {
               </p>
             </DialogContent>
 
-            {/* QR PREVIEW */}
+            {/* QR PREVIEW DIALOG */}
             <Dialog open={!!previewQr} onOpenChange={() => setPreviewQr(null)}>
               <DialogContent className="max-w-sm text-center">
                 {previewQr && (
@@ -180,8 +224,8 @@ const GiftSection = () => {
                       alt="QR Preview"
                       className="w-64 h-64 mx-auto object-contain"
                     />
+
                     <button
-                      type="button"
                       onClick={() =>
                         downloadQr(previewQr.src, previewQr.fileName)
                       }
