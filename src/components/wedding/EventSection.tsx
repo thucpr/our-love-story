@@ -5,7 +5,7 @@ const events = [
     title: 'Nhà Gái',
     location: 'Xã Thắng Lợi, Huyện Nông Cống, Tỉnh Thanh Hóa',
     schedules: [
-      { time: '17:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
+      { time: '16:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
       { time: '11:00', date: 'Thứ 5, 12/03/2026', event: 'Lễ Thành Hôn' },
     ],
     mapUrl: 'https://maps.google.com/maps?q=Tế+Thắng,+Nông+Cống,+Thanh+Hóa',

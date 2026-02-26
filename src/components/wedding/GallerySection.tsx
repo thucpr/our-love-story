@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const galleryImages = [
-  'https://images.unsplash.com/photo-1519741497674-611481863552?w=800',
-  'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800',
-  'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800',
-  'https://images.unsplash.com/photo-1529543544277-750e1a75a0e1?w=800',
-  'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800',
-  'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800',
-  'https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
-];
+import g0 from "../../image/g0.jpg";
+import g1 from "../../image/g1.jpg";
+import g2 from "../../image/g2.jpg";
+import g3 from "../../image/g3.jpg";
+import g4 from "../../image/g4.jpg";
+import g5 from "../../image/g5.jpg";
+import g6 from "../../image/g6.jpg";
+import g7 from "../../image/g7.jpg";
+import g8 from "../../image/g8.jpg";
+import g9 from "../../image/g9.jpg";
+import g10 from "../../image/g10.jpg";
+import g11 from "../../image/g11.jpg";
 
+const galleryImages = [g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11];
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 

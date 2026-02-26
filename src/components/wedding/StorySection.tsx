@@ -3,21 +3,28 @@ import { Heart, ChevronDown, ChevronUp } from 'lucide-react';
 
 const stories = [
   {
-    date: '12/2024',
+    date: '02/2025',
     title: 'Lần đầu gặp gỡ',
-    description: 'Lần đầu gặp nhau chẳng phải ở buổi tiệc sang trọng hay app hẹn hò mà là tình cờ đã gặp được nhau',
+    description: 'Chúng mình chẳng gặp nhau giữa ánh đèn lấp lánh của một buổi tiệc sang trọng, cũng không nhờ mai mối từ bạn bè hay người thân. Chỉ đơn giản là hai người xa lạ tình cờ lướt qua nhau trên mạng xã hội, rồi trò chuyện và ở lại. Thế giới ảo nhưng tình yêu là thật, một cuộc gặp gỡ rất tình cờ nhưng đủ để bắt đầu một câu chuyện dài lâu.',
     image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600',
   },
   {
     date: '02/2025',
     title: 'Buổi đầu hẹn hò',
-    description: 'Buổi hẹn hò đầu, người ta thường đi ăn hay dạo phố, còn chúng tôi chọn một quán cafe ngay giữa con phố nhỏ để chia sẻ những câu chuyện nồng ấm',
+    description: 'Chúng mình chọn một quán café nhỏ giữa lòng Hà Nội, nơi chúng mình ngồi cạnh nhau chia sẻ những câu chuyện đời thường. Giữa những câu chuyện giản dị và tiếng cười nhẹ nhàng, hai trái tim bắt đầu tìm thấy sự đồng điệu.',
     image: 'https://images.unsplash.com/photo-1529543544277-750e1a75a0e1?w=600',
   },
   {
     date: '02/2026',
     title: 'Cầu Hôn',
-    description: 'Không có nhẫn kim cương lấp lánh, chỉ có một lời cầu hôn giản dị mà chân thành.',
+    description: 'Không có hoa hồng hay nhẫn kim cương lấp lánh, chỉ có một lời cầu hôn chân thành và một cái gật đầu đầy yêu thương. Từ khoảnh khắc ấy, chúng mình biết đã sẵn sàng đi cùng nhau đến hết một đời.',
+    image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600',
+  },
+
+   {
+    date: '03/2026',
+    title: 'Kết Hôn',
+    description: 'Từ những rung động đầu tiên đến lời hẹn ước trăm năm, chúng mình quyết định viết tiếp câu chuyện ấy bằng một đám cưới mang tên: Hạnh Phúc',
     image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600',
   },
 ];
