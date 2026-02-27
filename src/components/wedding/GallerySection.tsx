@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import g0 from "../../image/g0.webp";
 import g1 from "../../image/g1.webp";
@@ -11,18 +11,27 @@ import g6 from "../../image/g6.webp";
 import g7 from "../../image/g7.webp";
 
 const galleryImages = [g0, g1, g2, g3, g4, g5, g6, g7];
+
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const handlePrev = () => {
     if (selectedImage !== null) {
-      setSelectedImage(selectedImage === 0 ? galleryImages.length - 1 : selectedImage - 1);
+      setSelectedImage(
+        selectedImage === 0
+          ? galleryImages.length - 1
+          : selectedImage - 1
+      );
     }
   };
 
   const handleNext = () => {
     if (selectedImage !== null) {
-      setSelectedImage(selectedImage === galleryImages.length - 1 ? 0 : selectedImage + 1);
+      setSelectedImage(
+        selectedImage === galleryImages.length - 1
+          ? 0
+          : selectedImage + 1
+      );
     }
   };
 
@@ -32,28 +41,41 @@ const GallerySection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="wedding-subtitle">Our Memories</p>
-        <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
+          <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
             Bộ Sưu Tập
           </h2>
-
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 
+                        [content-visibility:auto] 
+                        [contain:layout_paint]">
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className={`gallery-item ${
-                index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
+              className={`cursor-pointer ${
+                index === 0 || index === 5
+                  ? "md:col-span-2 md:row-span-2"
+                  : ""
               }`}
               onClick={() => setSelectedImage(index)}
             >
               <img
                 src={image}
                 alt={`Wedding photo ${index + 1}`}
-                className={`w-full object-cover ${
-                  index === 0 || index === 5 ? 'h-64 md:h-full' : 'h-48 md:h-64'
-                }`}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "low"}
+                decoding="async"
+                className={`w-full object-cover 
+                            transition-transform duration-300 
+                            hover:scale-105 
+                            will-change-transform 
+                            transform-gpu
+                            ${
+                              index === 0 || index === 5
+                                ? "aspect-[4/5] md:h-full"
+                                : "aspect-[4/5]"
+                            }`}
               />
             </div>
           ))}
@@ -62,19 +84,21 @@ const GallerySection = () => {
 
       {/* Lightbox */}
       {selectedImage !== null && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
           onClick={() => setSelectedImage(null)}
         >
+          {/* Close */}
           <button
-            className="absolute top-4 right-4 p-2 text-white hover:text-primary transition-colors"
+            className="absolute top-4 right-4 p-2 text-white"
             onClick={() => setSelectedImage(null)}
           >
             <X className="w-8 h-8" />
           </button>
 
+          {/* Prev */}
           <button
-            className="absolute left-4 p-2 text-white hover:text-primary transition-colors"
+            className="absolute left-4 p-2 text-white"
             onClick={(e) => {
               e.stopPropagation();
               handlePrev();
@@ -83,15 +107,18 @@ const GallerySection = () => {
             <ChevronLeft className="w-10 h-10" />
           </button>
 
+          {/* Image Preview */}
           <img
             src={galleryImages[selectedImage]}
             alt="Gallery preview"
-            className="max-w-[90vw] max-h-[85vh] object-contain"
+            decoding="async"
+            className="max-w-[92vw] max-h-[88vh] object-contain will-change-transform"
             onClick={(e) => e.stopPropagation()}
           />
 
+          {/* Next */}
           <button
-            className="absolute right-4 p-2 text-white hover:text-primary transition-colors"
+            className="absolute right-4 p-2 text-white"
             onClick={(e) => {
               e.stopPropagation();
               handleNext();
@@ -100,13 +127,15 @@ const GallerySection = () => {
             <ChevronRight className="w-10 h-10" />
           </button>
 
-          {/* Thumbnails */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+          {/* Dots */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
             {galleryImages.map((_, index) => (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === selectedImage ? 'bg-primary w-6' : 'bg-white/50 hover:bg-white'
+                className={`h-2 rounded-full transition-all ${
+                  index === selectedImage
+                    ? "bg-primary w-6"
+                    : "bg-white/50 hover:bg-white w-2"
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
