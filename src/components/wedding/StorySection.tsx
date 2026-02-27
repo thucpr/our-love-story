@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Heart, ChevronDown, ChevronUp } from 'lucide-react';
-
+import dating from "../../image/date.webp";
 const stories = [
   {
     date: '02/2025',
@@ -12,7 +12,7 @@ const stories = [
     date: '02/2025',
     title: 'Buổi đầu hẹn hò',
     description: 'Chúng mình chọn một quán café nhỏ giữa lòng Hà Nội, nơi chúng mình ngồi cạnh nhau chia sẻ những câu chuyện đời thường. Giữa những câu chuyện giản dị và tiếng cười nhẹ nhàng, hai trái tim bắt đầu tìm thấy sự đồng điệu.',
-    image: 'https://images.unsplash.com/photo-1529543544277-750e1a75a0e1?w=600',
+    image: dating
   },
   {
     date: '02/2026',
@@ -39,13 +39,12 @@ const StorySection = () => {
         <div className="text-center mb-16">
           <p className="wedding-subtitle">We Love Each Other</p>
         <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
-        Câu Chuyện của mình
+        Câu Chuyện Tình Yêu
         </h2>
 
          <p className="max-w-2xl mx-auto mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
 
-            Chúng tôi gặp nhau vào một ngày thật tình cờ rồi chẳng ai ngờ rằng 
-            sự tình cờ ấy lại trở thành định mệnh
+          Chúng mình tin rằng mỗi cuộc gặp gỡ đều có lý do của nó.Một người làm việc với hệ thống và công nghệ, một người làm việc với con người và cảm xúc. Từ hai thế giới khác biệt, chúng mình gặp nhau ở điểm chung: sự thấu hiểu và chân thành. Sau nhiều lần “update cảm xúc” và “fix lỗi hiểu lầm”, chúng mình quyết định “merge cuộc đời” và tạo nên một dự án mang tên: Gia đình nhỏ.
           </p>
         </div>
 

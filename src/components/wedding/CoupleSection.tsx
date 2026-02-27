@@ -10,12 +10,12 @@ const CoupleSection = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <p className="font-playfair text-base tracking-[0.4em] uppercase text-primary opacity-80">
-  HAPPY WEDDING
-</p>
+            HAPPY WEDDING
+          </p>
         </div>
 
         {/* Couple Cards */}
-        <div className="relative grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
+        <div className="relative grid md:grid-cols-2 gap-10 lg:gap-20 items-stretch">
 
           {/* Heart Divider */}
           <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
@@ -25,7 +25,7 @@ const CoupleSection = () => {
           </div>
 
           {/* Groom */}
-          <div className="wedding-card text-center group animate-fade-up">
+          <div className="wedding-card text-center group animate-fade-up h-full flex flex-col">
             <div className="relative w-52 h-52 mx-auto mb-6 rounded-full overflow-hidden shadow-xl">
               
               {/* Gradient background */}
@@ -43,7 +43,7 @@ const CoupleSection = () => {
               Bá Thức
             </h3>
 
-            <p className="text-muted-foreground leading-relaxed px-4">
+            <p className="text-muted-foreground leading-relaxed px-4 mt-auto">
               Chàng IT quen viết code và sửa bug, khi gặp đúng người, chàng nhận
               ra có một “vấn đề” không cần sửa chữa — chỉ cần yêu thương và bảo
               vệ cả đời 😍
@@ -51,7 +51,7 @@ const CoupleSection = () => {
           </div>
 
           {/* Bride */}
-          <div className="wedding-card text-center group animate-fade-up">
+          <div className="wedding-card text-center group animate-fade-up h-full flex flex-col">
             <div className="relative w-52 h-52 mx-auto mb-6 rounded-full overflow-hidden shadow-xl">
 
               {/* Gradient background */}
@@ -69,10 +69,8 @@ const CoupleSection = () => {
               Vân Anh
             </h3>
 
-            <p className="text-muted-foreground leading-relaxed px-4">
-              Nàng CS xinh xắn với nụ cười dịu dàng, quen lắng nghe và thấu hiểu
-              cảm xúc của khách hàng. Trong vô vàn người tình cờ gặp gỡ mỗi
-              ngày, nàng gặp được “vị khách” muốn ở bên để chăm sóc suốt đời và
+            <p className="text-muted-foreground leading-relaxed px-4 mt-auto">
+              Nàng CS xinh xắn với nụ cười dịu dàng, quen chăm sóc của khách hàng, cuối cùng nàng đã gặp được “vị khách” muốn ở bên để chăm sóc suốt đời và
               làm bến đỗ hạnh phúc 💕
             </p>
           </div>
