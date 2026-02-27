@@ -39,7 +39,7 @@ const StorySection = () => {
         <div className="text-center mb-16">
           <p className="wedding-subtitle">We Love Each Other</p>
         <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
-        Câu Chuyện Tình Yêu
+        Câu Chuyện của mình
         </h2>
 
          <p className="max-w-2xl mx-auto mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">

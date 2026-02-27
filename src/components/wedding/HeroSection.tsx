@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
-import couple from '../../image/couple.png';
+import couple from '../../image/couple.webp';
 
 interface CountdownTime {
   days: number;

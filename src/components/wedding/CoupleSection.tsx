@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
-import groomImg from "../../image/cr.jpg";
-import brideImg from "../../image/cd1.jpg";
+import groomImg from "../../image/cr.webp";
+import brideImg from "../../image/cd1.webp";
 
 const CoupleSection = () => {
   return (
@@ -9,15 +9,9 @@ const CoupleSection = () => {
 
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
-          <p className="wedding-subtitle text-lg tracking-widest uppercase text-primary">
-            Lời cảm ơn
-          </p>
-
-          <p className="max-w-2xl mx-auto text-primary text-xl mt-6 font-script leading-relaxed">
-            Chúng con xin gửi lời cảm ơn chân thành và sâu sắc nhất đến ông bà,
-            cô bác, anh chị em, bạn bè và đồng nghiệp đã dành thời gian quý báu
-            đến tham dự lễ cưới của chúng con
-          </p>
+          <p className="font-playfair text-base tracking-[0.4em] uppercase text-primary opacity-80">
+  HAPPY WEDDING
+</p>
         </div>
 
         {/* Couple Cards */}

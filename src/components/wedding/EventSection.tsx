@@ -1,5 +1,6 @@
 import { Calendar, Clock, MapPin } from 'lucide-react';
 
+import backg from "../../image/background.webp";
 const events = [
   {
     title: 'Nhà Gái',
@@ -28,7 +29,7 @@ const EventSection = () => {
     <section 
       className="wedding-section relative"
       style={{
-        backgroundImage: 'url(https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1920)',
+        backgroundImage: `url(${backg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',

@@ -8,8 +8,8 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
-import techQr from '../../image/tech.png';
-import vpQr from '../../image/vp.png';
+import techQr from '../../image/tech.webp';
+import vpQr from '../../image/vp.webp';
 
 const bankAccounts = [
   {

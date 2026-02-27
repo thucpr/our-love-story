@@ -39,50 +39,44 @@ const GallerySection = () => {
     <section className="wedding-section bg-gradient-section">
       <div className="wedding-container">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <p className="wedding-subtitle">Our Memories</p>
           <h2 className="wedding-title text-[clamp(1.6rem,2.6vw,2.2rem)]">
             Bộ Sưu Tập
           </h2>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 
-                        [content-visibility:auto] 
-                        [contain:layout_paint]">
+        {/* ===== GALLERY GRID (TỐI ƯU) ===== */}
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4
+                     [content-visibility:auto]
+                     [contain:layout_paint]
+                     will-change-scroll"
+        >
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className={`cursor-pointer ${
-                index === 0 || index === 5
-                  ? "md:col-span-2 md:row-span-2"
-                  : ""
-              }`}
+              className="overflow-hidden rounded-xl cursor-pointer"
               onClick={() => setSelectedImage(index)}
             >
               <img
                 src={image}
                 alt={`Wedding photo ${index + 1}`}
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "low"}
+                loading="lazy"
                 decoding="async"
-                className={`w-full object-cover 
-                            transition-transform duration-300 
-                            hover:scale-105 
-                            will-change-transform 
-                            transform-gpu
-                            ${
-                              index === 0 || index === 5
-                                ? "aspect-[4/5] md:h-full"
-                                : "aspect-[4/5]"
-                            }`}
+                fetchPriority="low"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="w-full aspect-[4/5] object-cover
+                           transition-transform duration-300 ease-out
+                           md:hover:scale-105
+                           transform-gpu"
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Lightbox */}
+      {/* ===== LIGHTBOX ===== */}
       {selectedImage !== null && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
@@ -112,7 +106,7 @@ const GallerySection = () => {
             src={galleryImages[selectedImage]}
             alt="Gallery preview"
             decoding="async"
-            className="max-w-[92vw] max-h-[88vh] object-contain will-change-transform"
+            className="max-w-[92vw] max-h-[88vh] object-contain"
             onClick={(e) => e.stopPropagation()}
           />
 
@@ -128,7 +122,7 @@ const GallerySection = () => {
           </button>
 
           {/* Dots */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
             {galleryImages.map((_, index) => (
               <button
                 key={index}
