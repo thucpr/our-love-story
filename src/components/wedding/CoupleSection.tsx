@@ -70,7 +70,7 @@ const CoupleSection = () => {
             </h3>
 
             <p className="text-muted-foreground leading-relaxed px-4 mt-auto">
-              Nàng CS xinh xắn với nụ cười dịu dàng, quen chăm sóc của khách hàng, cuối cùng nàng đã gặp được “vị khách” muốn ở bên để chăm sóc suốt đời và
+              Nàng CS xinh xắn với nụ cười dịu dàng, quen chăm sóc khách hàng, cuối cùng nàng đã gặp được “vị khách” muốn ở bên để chăm sóc suốt đời và
               làm bến đỗ hạnh phúc 💕
             </p>
           </div>

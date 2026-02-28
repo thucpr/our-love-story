@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Heart, ChevronDown, ChevronUp } from 'lucide-react';
 import dating from "../../image/date.webp";
+import married from "../../image/maried.webp";
 const stories = [
   {
     date: '02/2025',
@@ -25,7 +26,7 @@ const stories = [
     date: '03/2026',
     title: 'Kết Hôn',
     description: 'Từ những rung động đầu tiên đến lời hẹn ước trăm năm, chúng mình quyết định viết tiếp câu chuyện ấy bằng một đám cưới mang tên: Hạnh Phúc',
-    image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600',
+    image: married,
   },
 ];
 
@@ -42,9 +43,9 @@ const StorySection = () => {
         Câu Chuyện Tình Yêu
         </h2>
 
-         <p className="max-w-2xl mx-auto mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
+         <p className="max-w-2xl mx-auto mt-3 text-sm md:text-base leading-relaxed text-muted-foreground text-justify">
 
-          Chúng mình tin rằng mỗi cuộc gặp gỡ đều có lý do của nó.Một người làm việc với hệ thống và công nghệ, một người làm việc với con người và cảm xúc. Từ hai thế giới khác biệt, chúng mình gặp nhau ở điểm chung: sự thấu hiểu và chân thành. Sau nhiều lần “update cảm xúc” và “fix lỗi hiểu lầm”, chúng mình quyết định “merge cuộc đời” và tạo nên một dự án mang tên: Gia đình nhỏ.
+          Chúng mình tin rằng mỗi cuộc gặp gỡ đều có lý do của nó. Một người làm việc với hệ thống và công nghệ, một người làm việc với con người và cảm xúc. Từ hai thế giới khác biệt, chúng mình gặp nhau ở điểm chung sự thấu hiểu và chân thành. Sau nhiều lần “update cảm xúc” và “fix lỗi hiểu lầm”, chúng mình quyết định “merge cuộc đời” và tạo nên một dự án mang tên: Gia đình nhỏ.
           </p>
         </div>
 
