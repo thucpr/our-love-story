@@ -4,17 +4,17 @@ import backg from "../../image/background.webp";
 const events = [
   {
     title: 'Nhà Gái',
-    location: 'Xã Thắng Lợi, Huyện Nông Cống, Tỉnh Thanh Hóa',
+    location: 'Xã Thắng Lợi, Tỉnh Thanh Hóa',
     schedules: [
       { time: '16:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
-      { time: '11:00', date: 'Thứ 5, 12/03/2026', event: 'Lễ Thành Hôn' },
+      { time: '16:00', date: 'Thứ 2, 09/03/2026', event: 'Lễ Nạp Tài' },
     ],
     mapUrl: 'https://maps.google.com/maps?q=Tế+Thắng,+Nông+Cống,+Thanh+Hóa',
     embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007.123456789!2d105.6617813!3d19.6839322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3136fc336156dc0f%3A0x7cfeae93577b752d!2zVOG6vyBUaOG6r25nLCBOw7RuZyBD4buRbmcsIFRoYW5oIEjDs2EsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1234567890',
   },
   {
     title: 'Nhà Trai',
-    location: 'Xã Hoằng Tân, Huyện Hoằng Hóa, Tỉnh Thanh Hóa',
+    location: 'Xã Hoằng Lộc, Tỉnh Thanh Hóa',
     schedules: [
       { time: '17:00', date: 'Thứ 4, 11/03/2026', event: 'Bữa cơm thân mật' },
       { time: '11:00', date: 'Thứ 5, 12/03/2026', event: 'Lễ Thành Hôn' },
